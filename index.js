@@ -31,12 +31,7 @@ app.get("/api/:date", function (req, res) {
   let { date } = req.params;
 
   if (!date) {
-    const currentDate = new Date();
-    res.json({
-      unix: currentDate.getTime(),
-      utc: currentDate.toUTCString(),
-    });
-    return;
+    date = new Date();
   }
 
   let inputDate;
