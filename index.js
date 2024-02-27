@@ -27,10 +27,14 @@ app.get("/api/:date", function (req, res) {
   const { date } = req.params;
   let inputDate;
 
-  if (!isNaN(date)) {
-    inputDate = new Date(parseInt(date));
+  if (!date) {
+    inputDate = new Date();
   } else {
-    inputDate = new Date(date);
+    if (!isNaN(date)) {
+      inputDate = new Date(parseInt(date));
+    } else {
+      inputDate = new Date(date);
+    }
   }
 
   if (!isNaN(inputDate.getTime())) {
